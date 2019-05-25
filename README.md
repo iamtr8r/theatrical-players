@@ -1,7 +1,5 @@
 Imagine a company of theatrical players who go out to various events performing plays. Tipically, a customer will request a few plays and the company charges them based on teh size of the audience and the kind  of play they perform. There are currently two kinds of plays that the company performs: tragedies and comedies.
 
-Create a micro-service able that charges the customer based on the following business rules.
-
 ## Business rules
 
 * The plays they currently perform are 
