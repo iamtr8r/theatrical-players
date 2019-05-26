@@ -2,7 +2,7 @@
 
 namespace theatrical_players.Bill
 {
-    public class ComedyServices : IComedyServices
+    public class ComedyServices : ICalculateServices
     {
         public decimal Calculate(int Audience)
         {

@@ -6,17 +6,9 @@ namespace theatrical_players.Bill
 {
     public class BillServices : IBillServices
     {
-        private readonly IComedyServices _comedyServices;
-        private readonly ITragedyServices _tragedyServices;
-
-        public BillServices(
-            IComedyServices comedyServices,
-            ITragedyServices tragedyServices
-        )
-        {
-            _comedyServices = comedyServices;
-            _tragedyServices = tragedyServices;
-        }        
+        private readonly ComedyServices _comedyServices = new ComedyServices();
+        private readonly TragedyServices _tragedyServices = new TragedyServices();
+        private readonly PlayServices _playServices = new PlayServices();
 
         public string ReadCustomerName()
         {
@@ -25,22 +17,33 @@ namespace theatrical_players.Bill
             return CustomerName;
         }
 
+        public string ReadAddAPlay()
+        {
+            Console.WriteLine("Do you want to add a Play? (Y/N)");
+            var Answer = Console.ReadLine().ToUpper().ToString();
+            return Answer;
+        }
+
+        public string ReadPlay()
+        {
+            Console.WriteLine("Play:");
+            var Play = Console.ReadLine().ToString();
+            return Play;
+        }
+
+        public int ReadAudience()
+        {
+            Console.WriteLine("Audience:");
+            var Audience = Convert.ToInt32(Console.ReadLine());
+            return Audience;
+        }
+
         public List<Performance.Performance> ReadPerformances()
         {
             var PerformanceList = new List<Performance.Performance>();
-
-            Console.WriteLine("Do you want to add a Play? (Y/N)");
-            var Answer = Console.ReadLine().ToString();
-
-            while (Answer.ToUpper() == "Y")
+            while (ReadAddAPlay() == "Y")
             {
-                Console.WriteLine("Play:");
-                var Play = Console.ReadLine().ToString();
-
-                Console.WriteLine("Audience:");
-                var Audience = Convert.ToInt32(Console.ReadLine());
-
-                PerformanceList.Add(new Performance.Performance(Play, Audience));
+                PerformanceList.Add(new Performance.Performance(ReadPlay(), ReadAudience()));
             }
             return PerformanceList;
         }
@@ -50,17 +53,15 @@ namespace theatrical_players.Bill
             decimal Total = 0;
             foreach (var Performance in bill.Performances)
             {
-                //TODO: ver qual é o tipo da Performance e calcular total de acordo
-                // sem usar if????
-                if (Performance.Play.Type == "tragedy")
+                if (_playServices.GetItem(Performance.PlayId).Type == "tragedy")
                 {
                     Total += _tragedyServices.Calculate(Performance.Audience);
                 }
                 else
                 {
                     Total += _comedyServices.Calculate(Performance.Audience);
-                }                
-                
+                }
+
             }
             return Total;
         }

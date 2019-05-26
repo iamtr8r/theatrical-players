@@ -1,6 +1,6 @@
 ﻿namespace theatrical_players.Bill.Interfaces
 {
-    public interface IComedyServices
+    public interface ICalculateServices
     {
         decimal Calculate(int Audience);
     }

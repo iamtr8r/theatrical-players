@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Performance\Interfaces\" />
-    <Folder Include="Play\Interfaces\" />
+    <Compile Remove="Performance\Interfaces\**" />
+    <Compile Remove="Play\Interfaces\**" />
+    <EmbeddedResource Remove="Performance\Interfaces\**" />
+    <EmbeddedResource Remove="Play\Interfaces\**" />
+    <None Remove="Performance\Interfaces\**" />
+    <None Remove="Play\Interfaces\**" />
   </ItemGroup>
 
 </Project>

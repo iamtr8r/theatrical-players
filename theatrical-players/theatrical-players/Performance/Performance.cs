@@ -14,7 +14,5 @@ namespace theatrical_players.Performance
 
         public string PlayId { get; set; }
         public int Audience { get; set; }
-
-        public virtual Play.Play Play { get; set; }
     }
 }
