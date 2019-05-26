@@ -7,10 +7,14 @@ namespace theatrical_players
     {
         private static void Main()
         {
+            WelcomeMessage();
+            new InitialServices().BillNow();
+        }
+
+        private static void WelcomeMessage()
+        {
             Console.WriteLine("Theatrical Players");
             Console.WriteLine();
-
-            //InitialServices.BillNow();       
         }
     }
 }
