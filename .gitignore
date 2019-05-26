@@ -1,5 +1,8 @@
 
 theatrical-players/\.vs/
-theatrical-players/bin
-theatrical-players/obj
-theatrical-players/theatrical-players.csproj.user
+
+theatrical-players/theatrical-players/bin/
+
+theatrical-players/theatrical-players/obj/
+
+theatrical-players/theatrical-players/theatrical-players.csproj.user
